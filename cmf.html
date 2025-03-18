@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Define character encoding for the document -->
+    <meta charset="UTF-8">
+    <!-- Ensure responsive design with viewport meta tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Set the title of the webpage -->
+    <title>CMF by Nothing</title>
+    <!-- Include Bootstrap CSS for styling and layout -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Import custom fonts from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Include AOS (Animate On Scroll) CSS for animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        /* Reset default padding, margin, and set box-sizing globally */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* Style the body element */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+        }
+
+        /* Style the navigation bar */
+        .navbar {
+            padding: 0.5rem 1rem;
+            background-color: transparent;
+            position: absolute;
+            top: 20px;
+            left: 0;
+            width: 100%;
+            z-index: 10; /* Ensure navbar stays above other content */
+        }
+
+        /* Style the navbar brand (logo) */
+        .navbar-brand {
+            padding: 0;
+        }
+
+        .navbar-brand img {
+            height: 40px; /* Set logo height */
+        }
+
+        /* Style navigation links */
+        .navbar-nav .nav-link {
+            color: white !important;
+            margin-left: 20px;
+            font-size: 16px;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #ff4500 !important; /* Orange hover effect */
+        }
+
+        /* Style the navbar toggler for mobile */
+        .navbar-toggler {
+            background-color: white;
+        }
+
+        /* Style the main content section with background image */
+        .main-content {
+            background-image: url(https://in.cmf.tech/cdn/shop/files/img_v3_02cj_e9ce815e-5c77-41ec-9a5d-8a83de63c75h_1920x.png?v=1720418506);
+            min-height: 100vh;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding-top: 80px; /* Space for navbar */
+            padding-bottom: 20px;
+        }
+
+        /* Container for text and button in main content */
+        .tx-bt {
+            height: auto;
+            width: 550px;
+            display: flex;
+            align-items: flex-end;
+            margin-left: 60px;
+            gap: 10px;
+        }
+
+        /* Style the text/button wrapper */
+        .tb {
+            height: auto;
+            width: 550px;
+        }
+
+        .tb h1 {
+            width: 70%;
+            color: white;
+            font-size: 50px;
+            font-family: 'DotGothic16', sans-serif;
+            line-height: 1.2;
+            text-transform: uppercase;
+        }
+
+        .tb button {
+            height: 40px;
+            width: 150px;
+            border: none;
+            background-color: orangered;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .tb button:hover {
+            background-color: #ff5722; /* Lighter orange on hover */
+        }
+
+        /* Container for product sections to prevent overflow */
+        .ear {
+            overflow: hidden;
+        }
+
+        /* Style product sections with background images */
+        .eimg, .watch, .charg {
+            width: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .eimg {
+            background-image: url(https://in.cmf.tech/cdn/shop/files/Group_6_1920x.jpg?v=1729061118);
+        }
+
+        .watch {
+            background-image: url(https://in.cmf.tech/cdn/shop/files/Group_5_1920x.jpg?v=1729061126);
+        }
+
+        .charg {
+            background-image: url(https://in.cmf.tech/cdn/shop/files/PC_4292760c-c953-4ad7-9c37-d2970bf385e8_1920x.jpg?v=1720164738);
+        }
+
+        /* Style the bottom content container in product sections */
+        .bt {
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            margin-top: auto; /* Push content to bottom */
+        }
+
+        /* Style the content wrapper */
+        .bt .ct {
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+
+        /* Style the content module */
+        .ct .cm {
+            width: 100%;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding: 20px;
+        }
+
+        .cm h1 {
+            font-weight: bolder;
+            font-size: 60px;
+            font-family: 'DotGothic16', sans-serif;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .cm p {
+            font-size: 20px;
+            font-family: 'Noto Sans', sans-serif;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        /* Style the button container in product sections */
+        .cm .bnt {
+            height: 40px;
+            width: 100%;
+            max-width: 350px;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .bnt button {
+            height: 35px;
+            width: 48%;
+            border: none;
+            font-family: 'DotGothic16', sans-serif;
+            font-size: 14px;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .bnt .bg-dark {
+            background-color: #000;
+            color: white;
+        }
+
+        .bnt .bg-dark:hover {
+            background-color: #333; /* Darker gray on hover */
+        }
+
+        .bnt button:nth-child(2) {
+            background-color: #ff4500;
+            color: white;
+        }
+
+        .bnt button:nth-child(2):hover {
+            background-color: #ff5722; /* Lighter orange on hover */
+        }
+
+        /* Style the product section background */
+        .product-section {
+            background-color: #E1E4EA;
+        }
+
+        /* Style individual product cards */
+        .product-card {
+            text-align: center;
+            padding: 20px;
+            border-right: 1px solid #ccc;
+        }
+
+        .product-card:last-child {
+            border-right: none; /* Remove right border for last card */
+        }
+
+        .product-card:nth-child(2) {
+            background-color: #A3A7A4; /* Unique background for second card */
+        }
+
+        .product-card h3 {
+            font-family: 'DotGothic16', sans-serif;
+            font-size: 40px;
+            color: #000;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .product-card .price {
+            font-family: 'DotGothic16', sans-serif;
+            font-size: 18px;
+            color: #ff4500;
+            margin-bottom: 10px;
+        }
+
+        .product-card .description {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        /* Style color option dots */
+        .color-options {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .color-dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            transition: border 0.3s ease;
+        }
+
+        .color-dot.active {
+            border: 2px solid #ff4500; /* Highlight active color */
+        }
+
+        /* Style product card buttons */
+        .product-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btn-discover, .btn-buy {
+            font-family: 'DotGothic16', sans-serif;
+            font-size: 14px;
+            text-transform: uppercase;
+            padding: 8px 20px;
+            border: none;
+            width: 200px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-discover {
+            background-color: #000;
+            color: white;
+        }
+
+        .btn-discover:hover {
+            background-color: #333;
+        }
+
+        .btn-buy {
+            background-color: #ff4500;
+            color: white;
+        }
+
+        .btn-buy:hover {
+            background-color: #ff5722;
+        }
+
+        /* Style the review/testimonial section */
+        .tx {
+            min-height: 70vh;
+            background-color: #424B54;
+            color: white;
+            padding: 40px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .tx .container {
+            height: 100%;
+        }
+
+        .tx h2 {
+            font-family: 'DotGothic16', sans-serif;
+            font-size: 24px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .tx p {
+            font-family: 'Noto Sans', sans-serif;
+            font-size: 14px;
+            color: #ddd;
+        }
+
+        /* Style the footer section */
+        footer {
+            background-color: #fff;
+            color: #000;
+            padding: 3rem 0 1rem 0;
+        }
+        footer h6 {
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            color: #000;
+        }
+        footer ul {
+            list-style: none;
+            padding: 0;
+        }
+        footer ul li {
+            margin-bottom: 0.75rem;
+            font-family: 'NType82-bold', 'Noto Sans Thai', 'NType82Mono' !important;
+        }
+        footer ul li a {
+            color: #000;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+        footer ul li a:hover {
+            color: #333;
+        }
+        /* Style the email subscription in footer */
+        .footer-email {
+            position: relative;
+            max-width: 300px;
+        }
+        .footer-email input {
+            width: 100%;
+            padding: 0.5rem 1rem;
+            background-color: transparent;
+            border: 1px solid #000;
+            border-radius: 20px;
+            color: #000;
+            font-size: 0.9rem;
+        }
+        .footer-email input::placeholder {
+            color: #666;
+            text-transform: uppercase;
+        }
+        .footer-email button {
+            position: absolute;
+            right: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #000;
+            cursor: pointer;
+        }
+        .footer-email button svg {
+            width: 20px;
+            height: 20px;
+        }
+        /* Style the footer bottom section */
+        .footer-bottom {
+            border-top: 1px solid #ccc;
+            padding-top: 1.5rem;
+            margin-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .footer-bottom ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .footer-bottom ul li a {
+            font-size: 0.85rem;
+        }
+        /* Style social media icons */
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+        .social-icons a {
+            color: #000;
+            transition: color 0.3s ease;
+        }
+        .social-icons a:hover {
+            color: #333;
+        }
+        .social-icons svg {
+            width: 20px;
+            height: 20px;
+        }
+        /* Style the country selector */
+        .country-selector {
+            font-size: 0.9rem;
+            color: #000;
+        }
+
+        /* Responsive design for large screens (1200px - 992px) */
+        @media (max-width: 1200px) and (min-width: 992px) {
+            .navbar-brand img { height: 35px; }
+            .navbar-nav .nav-link { font-size: 15px; margin-left: 15px; }
+            .tx-bt { width: 450px; margin-left: 40px; }
+            .tb { width: 450px; }
+            .tb h1 { font-size: 40px; }
+            .tb button { width: 140px; font-size: 15px; }
+            .eimg, .watch, .charg { min-height: 80vh; }
+            .cm h1 { font-size: 55px; }
+            .cm p { font-size: 18px; }
+            .bnt button { font-size: 13px; }
+            .product-card h3 { font-size: 22px; }
+            .product-card .price { font-size: 16px; }
+            .product-card .description { font-size: 12px; }
+            .btn-discover, .btn-buy { width: 180px; font-size: 13px; }
+            .tx { min-height: 65vh; }
+            .tx h2 { font-size: 22px; }
+            .tx p { font-size: 13px; }
+        }
+
+        /* Responsive design for medium screens (992px - 768px) */
+        @media (max-width: 992px) and (min-width: 768px) {
+            .navbar-brand img { height: 35px; }
+            .navbar-nav .nav-link { font-size: 15px; margin-left: 15px; }
+            .tx-bt { width: 350px; margin-left: 40px; }
+            .tb { width: 350px; }
+            .tb h1 { font-size: 35px; }
+            .tb button { width: 130px; font-size: 14px; }
+            .eimg, .watch, .charg { min-height: 70vh; }
+            .bt { padding: 15px; }
+            .ct .cm { max-width: 400px; }
+            .cm h1 { font-size: 50px; }
+            .cm p { font-size: 16px; }
+            .bnt button { font-size: 12px; height: 30px; }
+            .product-section { padding: 30px 0; }
+            .product-card { border-right: none; border-bottom: 1px solid #ccc; padding: 15px 0; }
+            .product-card:last-child { border-bottom: none; }
+            .product-card h3 { font-size: 20px; }
+            .product-card .price { font-size: 15px; }
+            .product-card .description { font-size: 11px; }
+            .color-dot { width: 18px; height: 18px; }
+            .btn-discover, .btn-buy { width: 160px; font-size: 12px; padding: 6px 15px; }
+            .tx { min-height: 60vh; }
+            .tx h2 { font-size: 20px; }
+            .tx p { font-size: 12px; }
+        }
+
+        /* Responsive design for small screens (768px and below) */
+        @media (max-width: 768px) {
+            .navbar-brand img { height: 30px; }
+            .navbar-nav .nav-link { font-size: 14px; margin-left: 10px; }
+            .tx-bt { width: 300px; margin-left: 20px; }
+            .tb { width: 300px; }
+            .tb h1 { font-size: 30px; }
+            .tb button { width: 120px; font-size: 12px; }
+            .eimg, .watch, .charg { min-height: 60vh; }
+            .bt { padding: 10px; }
+            .ct .cm { max-width: 350px; }
+            .cm h1 { font-size: 40px; }
+            .cm p { font-size: 14px; }
+            .bnt button { font-size: 10px; height: 28px; }
+            .product-section { padding: 20px 0; }
+            .product-card h3 { font-size: 18px; }
+            .product-card .price { font-size: 14px; }
+            .product-card .description { font-size: 10px; }
+            .color-dot { width: 15px; height: 15px; }
+            .btn-discover, .btn-buy { width: 140px; font-size: 11px; padding: 5px 12px; }
+            .tx { min-height: 50vh; }
+            .tx h2 { font-size: 18px; }
+            .tx p { font-size: 10px; }
+        }
+
+        /* Responsive design for extra small screens (576px and below) */
+        @media (max-width: 576px) {
+            .navbar-brand img { height: 25px; }
+            .navbar-nav .nav-link { font-size: 12px; margin-left: 5px; text-align: center; }
+            .tx-bt { width: 90%; margin: 0 auto; align-items: center; }
+            .tb { width: 100%; text-align: center; }
+            .tb h1 { font-size: 25px; width: 100%; margin: 0 auto; }
+            .tb button { width: 100px; font-size: 12px; margin-top: 10px; }
+            .eimg, .watch, .charg { min-height: 50vh; }
+            .bt { padding: 10px; }
+            .ct .cm { max-width: 300px; }
+            .cm h1 { font-size: 30px; }
+            .cm p { font-size: 12px; }
+            .bnt { display: flex; flex-direction: column; gap: 10px; }
+            .bnt button { font-size: 9px; height: 35px; width: 100%; }
+            .product-card h3 { font-size: 16px; }
+            .product-card .price { font-size: 12px; }
+            .product-card .description { font-size: 8px; }
+            .color-dot { width: 12px; height: 12px; }
+            .btn-discover, .btn-buy { width: 120px; font-size: 10px; padding: 4px 10px; }
+            .tx { min-height: 40vh; }
+            .tx h2 { font-size: 16px; }
+            .tx p { font-size: 8px; }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation bar section -->
+    <nav class="navbar navbar-expand-lg" data-aos="fade-down" data-aos-duration="800">
+        <div class="container-fluid">
+            <!-- Logo with animation -->
+            <a class="navbar-brand" href="#" data-aos="zoom-in" data-aos-delay="200">
+                <img src="https://in.cmf.tech/cdn/shop/files/cmf-logo-light-header-mob_d441cb01-e48e-42a6-9a3e-82d2cfecd31f_150x.png?v=1695698542" alt="CMF Logo">
+            </a>
+            <!-- Navbar toggler for mobile -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Navigation links with animation -->
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav" data-aos="fade-left" data-aos-delay="400">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#products">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#support">Support</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main content section with background image -->
+    <div class="main-content" data-aos="fade-up" data-aos-duration="1000">
+        <div class="tx-bt" data-aos="fade-right" data-aos-delay="200">
+            <div class="tb">
+                <!-- Main heading with animation -->
+                <h1 data-aos="zoom-in" data-aos-delay="400">WONDERFUL BY <br> DESIGN</h1>
+                <!-- Watch video button with animation -->
+                <button data-aos="zoom-in" data-aos-delay="600">WATCH VIDEO</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Carousel section -->
+    <div id="demo" class="carousel slide" data-bs-ride="carousel" data-aos="fade-up" data-aos-duration="1000">
+        <!-- Carousel indicators -->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+        </div>
+        <!-- Carousel items -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://in.cmf.tech/cdn/shop/files/Group_2_4_1920x.jpg?v=1729061377" alt="Slide 1" class="d-block w-100">
+            </div>
+            <div class="carousel-item">
+                <img src="https://in.cmf.tech/cdn/shop/files/PC-IN_1920x.jpg?v=1728472444" alt="Slide 2" class="d-block w-100">
+            </div>
+        </div>
+        <!-- Carousel controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+
+    <!-- Product sections with background images -->
+    <div class="ear" data-aos="fade-up" data-aos-duration="1000">
+        <div class="eimg">
+            <div class="bt">
+                <div class="ct">
+                    <div class="cm" data-aos="fade-left" data-aos-delay="200">
+                        <h1 data-aos="zoom-in" data-aos-delay="400">BUDS PRO 2</h1>
+                        <p data-aos="fade-up" data-aos-delay="600">DIAL UP THE SOUND</p>
+                        <div class="bnt" data-aos="zoom-in" data-aos-delay="800">
+                            <button class="bg-dark">LEARN MORE</button>
+                            <button style="background-color: #ff4500; color: white;">BUY NOW</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ear" data-aos="fade-up" data-aos-duration="1000">
+        <div class="watch">
+            <div class="bt">
+                <div class="ct">
+                    <div class="cm" data-aos="fade-left" data-aos-delay="200">
+                        <h1 data-aos="zoom-in" data-aos-delay="400">WATCH PRO 2</h1>
+                        <p data-aos="fade-up" data-aos-delay="600">YOUR TIME YOUR WAY</p>
+                        <div class="bnt" data-aos="zoom-in" data-aos-delay="800">
+                            <button class="bg-dark">LEARN MORE</button>
+                            <button style="background-color: #ff4500; color: white;">BUY NOW</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ear" data-aos="fade-up" data-aos-duration="1000">
+        <div class="charg">
+            <div class="bt">
+                <div class="ct">
+                    <div class="cm" style="color: white;" data-aos="fade-left" data-aos-delay="200">
+                        <h1 data-aos="zoom-in" data-aos-delay="400">POWER 65W GAN</h1>
+                        <p data-aos="fade-up" data-aos-delay="600">ULTRA-FAST CHARGING</p>
+                        <div class="bnt" data-aos="zoom-in" data-aos-delay="800">
+                            <button class="bg-dark">LEARN MORE</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product showcase section -->
+    <section class="product-section" data-aos="fade-up" data-aos-duration="1000">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Product card 1 -->
+                <div class="col-lg-4 col-md-12 product-card" style="background-color: #E1E4EA;" data-aos="flip-left" data-aos-delay="200">
+                    <h3>BUDS PRO</h3>
+                    <p class="price">₹3,499</p>
+                    <p class="description">45 DB HYBRID ACTIVE NOISE CANCELLATION<br>11HRS OF NON-STOP MUSIC WITH BUDS ONLY ULTRA BASS TECHNOLOGY</p>
+                    <img src="https://in.cmf.tech/cdn/shop/files/tws_68077fae-f405-4ca7-80c8-4d9e38c595da.png?v=1695713488" alt="Buds Pro">
+                    <div class="color-options">
+                        <div class="color-dot" style="background-color: white; border: 2px solid #ff4500;"></div>
+                        <div class="color-dot" style="background-color: black;"></div>
+                        <div class="color-dot" style="background-color: #ff4500;"></div>
+                    </div>
+                    <div class="product-buttons">
+                        <button class="btn-discover">DISCOVER</button>
+                        <button class="btn-buy">BUY NOW</button>
+                    </div>
+                </div>
+                <!-- Product card 2 -->
+                <div class="col-lg-4 col-md-12 product-card" style="background-color: #A3A7A4;" data-aos="flip-left" data-aos-delay="400">
+                    <h3>WATCH PRO</h3>
+                    <p class="price">From ₹4,499</p>
+                    <p class="description">MIGHTY 1.96" AMOLED DISPLAY<br>BLUETOOTH CALLS WITH AI NOISE REDUCTION<br>BUILT-IN MULTI-SYSTEM GPS</p>
+                    <img src="https://in.cmf.tech/cdn/shop/files/Watch_Light_Grey_842542fb-13dc-4e93-a11e-320fd49f7b02.png?v=1704282426" alt="Watch Pro">
+                    <div class="color-options">
+                        <div class="color-dot" style="background-color: white;"></div>
+                        <div class="color-dot" style="background-color: #ccc; border: 2px solid #ff4500;"></div>
+                        <div class="color-dot" style="background-color: black;"></div>
+                        <div class="color-dot" style="background-color: #ff4500;"></div>
+                    </div>
+                    <div class="product-buttons">
+                        <button class="btn-discover">DISCOVER</button>
+                        <button class="btn-buy">BUY NOW</button>
+                    </div>
+                </div>
+                <!-- Product card 3 -->
+                <div class="col-lg-4 col-md-12 product-card" style="background-color: #E1E4EA;" data-aos="flip-left" data-aos-delay="600">
+                    <h3>POWER 65W GAN</h3>
+                    <p class="price">₹2,999</p>
+                    <p class="description">3-IN-1 COMPACT DESIGN<br>65W GAN ULTRA-FAST CHARGING<br>WIDE COMPATIBILITY</p>
+                    <img src="https://in.cmf.tech/cdn/shop/files/power-black.png?v=1695643040" alt="Power 65W GaN">
+                    <div class="color-options">
+                        <div class="color-dot" style="background-color: black; border: 2px solid #ff4500;"></div>
+                        <div class="color-dot" style="background-color: #ff4500;"></div>
+                    </div>
+                    <div class="product-buttons">
+                        <button class="btn-discover">DISCOVER</button>
+                        <button class="btn-buy">BUY NOW</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Review/testimonial section -->
+    <div class="tx" data-aos="fade-up" data-aos-duration="1000">
+        <div class="container py-5">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                <!-- Review 1 -->
+                <div class="col" data-aos="fade-up" data-aos-delay="200">
+                    <h2 class="h4">Forbes</h2>
+                    <p>"CMF Nothing’s New Pro Buds Are The Best True Wireless Earbuds Under $50"</p>
+                </div>
+                <!-- Review 2 -->
+                <div class="col" data-aos="fade-up" data-aos-delay="300">
+                    <h2 class="h4">Creative Bloq</h2>
+                    <p>"New brand CMF by Nothing feels disruptive"</p>
+                </div>
+                <!-- Review 3 -->
+                <div class="col" data-aos="fade-up" data-aos-delay="400">
+                    <h2 class="h4">GQ</h2>
+                    <p>"A set of affordable tech that looks great and works better"</p>
+                </div>
+                <!-- Review 4 -->
+                <div class="col" data-aos="fade-up" data-aos-delay="500">
+                    <h2 class="h4">T3</h2>
+                    <p>"CMF by Nothing Buds Pro have the specs to be the best budget wireless earbuds yet"</p>
+                </div>
+                <!-- Review 5 -->
+                <div class="col" data-aos="fade-up" data-aos-delay="600">
+                    <h2 class="h4">Hypebeast</h2>
+                    <p>"Engineered to deliver timeless and functional design, archived through a careful selection of colors, materials, and finishes"</p>
+                </div>
+                <!-- Review 6 -->
+                <div class="col" data-aos="fade-up" data-aos-delay="700">
+                    <h2 class="h4">Highsnobiety</h2>
+                    <p>"The Watch Pro and Buds Pro offer minimalist designs and capabilities similar to leading brands at a quarter of the cost"</p>
+                </div>
+                <!-- Review 7 -->
+                <div class="col" data-aos="fade-up" data-aos-delay="800">
+                    <h2 class="h4">TechRadar</h2>
+                    <p>"If there's any company that could bring neckband earbuds back into vogue, CMF by Nothing is definitely it"</p>
+                </div>
+                <!-- Review 8 -->
+                <div class="col" data-aos="fade-up" data-aos-delay="900">
+                    <h2 class="h4">Stuff</h2>
+                    <p>"CMF Buds – An exceptional all-rounder on a budget"</p>
+                </div>
+                <!-- Review 9 -->
+                <div class="col" data-aos="fade-up" data-aos-delay="1000">
+                    <h2 class="h4">GSM Arena</h2>
+                    <p>"CMF Buds and Neckband Pro launch with low prices, ANC and advanced connectivity"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer section -->
+    <footer data-aos="fade-up" data-aos-duration="1000">
+        <div class="container">
+            <div class="row">
+                <!-- Products column -->
+                <div class="col-12 col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <h6>Products</h6>
+                    <ul>
+                        <li><a href="#">Phone (3a) Pro</a></li>
+                        <li><a href="#">Phone (3a)</a></li>
+                        <li><a href="#">Phone (2a) Plus</a></li>
+                        <li><a href="#">Phone (2a)</a></li>
+                        <li><a href="#">Phone (2)</a></li>
+                        <li><a href="#">Ear (open)</a></li>
+                        <li><a href="#">Ear</a></li>
+                        <li><a href="#">Ear (a)</a></li>
+                        <li><a href="#">Accessories</a></li>
+                        <li><a href="#">Apparel</a></li>
+                    </ul>
+                </div>
+                <!-- Company column -->
+                <div class="col-12 col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <h6>Company</h6>
+                    <ul>
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Community</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                        <li><a href="#">Business enquiry</a></li>
+                        <li><a href="#">Press contact</a></li>
+                    </ul>
+                </div>
+                <!-- Support column -->
+                <div class="col-12 col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <h6>Support</h6>
+                    <ul>
+                        <li><a href="#">Support centre</a></li>
+                        <li><a href="#">Contact us</a></li>
+                        <li><a href="#">Contact us via WhatsApp</a></li>
+                        <li><a href="#">Service centre</a></li>
+                        <li><a href="#">E-waste management</a></li>
+                        <li><a href="#">Find a store</a></li>
+                    </ul>
+                </div>
+                <!-- Mailing list subscription -->
+                <div class="col-12 col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="500">
+                    <h6>Join Our Mailing List</h6>
+                    <div class="footer-email">
+                        <input type="email" placeholder="Email Address">
+                        <button>
+                            <!-- SVG arrow icon for email submission -->
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer bottom with policies, social icons, and country selector -->
+            <div class="footer-bottom" data-aos="fade-up" data-aos-delay="600">
+                <ul>
+                    <li><a href="#">Privacy policy</a></li>
+                    <li><a href="#">Warranty policy</a></li>
+                    <li><a href="#">Acceptable use policy</a></li>
+                    <li><a href="#">User agreement</a></li>
+                </ul>
+                <div class="social-icons">
+                    <a href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg></a>
+                    <a href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+                    <a href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+                    <a href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a>
+                </div>
+                <div class="country-selector">India</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Include Bootstrap JS and Popper.js for interactive components -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Include AOS JS for scroll animations -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS library with custom settings
+        AOS.init({
+            duration: 1000, // Global duration for all animations
+            once: true, // Animations happen only once when scrolling down
+            offset: 100, // Trigger animations 100px before element enters viewport
+        });
+    </script>
+</body>
+</html>

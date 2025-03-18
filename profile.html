@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Define character encoding for the document -->
+    <meta charset="UTF-8">
+    <!-- Ensure responsive design with viewport meta tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Set the title of the webpage -->
+    <title>Account</title>
+    <!-- Include Bootstrap CSS for styling and layout -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Import custom fonts from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Include AOS (Animate On Scroll) CSS for animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        /* Reset default padding, margin, and set box-sizing globally */
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        /* Style the navigation bar */
+        nav {
+            height: 70px;
+            width: 100%;
+            background-color: #000;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        /* Style navigation links */
+        nav a {
+            text-decoration: none;
+            color: #fff;
+        }
+        /* Style the logo within the navigation bar */
+        .logo {
+            height: inherit;
+            width: 30%;
+            font-family: 'DotGothic16', sans-serif;
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            white-space: nowrap;
+            transition: color 0.3s ease;
+        }
+
+        /* Responsive design for medium screens (max-width: 768px) */
+        @media (max-width: 768px) {
+            nav {
+                height: 60px;
+            }
+            .logo {
+                width: 40%;
+                font-size: 1.5rem;
+                letter-spacing: 1px;
+            }
+        }
+        /* Responsive design for small screens (max-width: 576px) */
+        @media (max-width: 576px) {
+            nav {
+                height: 50px;
+            }
+            .logo {
+                width: 50%;
+                font-size: 1.2rem;
+                letter-spacing: 0.5px;
+            }
+        }
+
+        /* Style the main content section */
+        .main {
+            height: 875px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+        }
+        /* Style the background image section */
+        .img {
+            height: 100%;
+            width: 75%;
+            background-image: url('https://in.nothing.tech/cdn/shop/files/Nothing_Login_2330x1438_2.png?v=1659345784');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            display: block;
+        }
+        /* Style the login form container */
+        .login {
+            height: 100%;
+            width: 25%;
+            background-color: #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+
+        /* Style the login heading */
+        .login h2 {
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #fff;
+            font-family: 'NType82-bold', 'Noto Sans Thai', 'NType82Mono' !important;
+        }
+        /* Style form input fields */
+        .form-control {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            width: 100%;
+            background-color: #1a1a1a;
+            color: #fff;
+            font-family: 'NType82-bold', 'Noto Sans Thai', 'NType82Mono' !important;
+        }
+        /* Style placeholder text in form inputs */
+        .form-control::placeholder {
+            color: #999;
+        }
+        /* Wrapper for password input and eye icon */
+        .password-wrapper {
+            position: relative;
+        }
+        /* Style the eye icon for password visibility toggle */
+        .password-wrapper .eye-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #999;
+        }
+        /* Style the forgot password link */
+        .forgot-password {
+            text-align: right;
+            margin-bottom: 1rem;
+        }
+        .forgot-password a {
+            color: #fff;
+            text-decoration: none;
+            border-bottom: 1px dotted #fff;
+            font-size: 0.9rem;
+            font-family: 'NType82-bold', 'Noto Sans Thai', 'NType82Mono' !important;
+        }
+        /* Style the confirm button */
+        .btn-confirm {
+            background-color: #fff;
+            color: #000;
+            border: none;
+            border-radius: 25px;
+            padding: 0.75rem 0;
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            width: 100%;
+            margin-bottom: 1rem;
+            transition: background-color 0.3s ease;
+            font-family: 'NType82-bold', 'Noto Sans Thai', 'NType82Mono' !important;
+        }
+        .btn-confirm:hover {
+            background-color: #ccc;
+            color: #000;
+        }
+        /* Style the "or" divider between login options */
+        .or-divider {
+            text-align: center;
+            margin: 1rem 0;
+            color: #999;
+            font-size: 0.9rem;
+            font-family: 'NType82-bold', 'Noto Sans Thai', 'NType82Mono' !important;
+        }
+        /* Style social login buttons */
+        .btn-social {
+            background-color: #fff;
+            color: #000;
+            border: none;
+            border-radius: 25px;
+            padding: 0.75rem 0;
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            width: 100%;
+            margin-bottom: 0.5rem;
+            transition: background-color 0.3s ease;
+            font-family: 'NType82-bold', 'Noto Sans Thai', 'NType82Mono' !important;
+        }
+        .btn-social:hover {
+            background-color: #ccc;
+            color: #000;
+        }
+        /* Style privacy policy and create account text */
+        .privacy-policy, .create-account {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #999;
+            margin-top: 1rem;
+            font-family: 'NType82-bold', 'Noto Sans Thai', 'NType82Mono' !important;
+        }
+        .create-account a {
+            color: #fff;
+            text-decoration: none;
+            border-bottom: 1px dotted #fff;
+        }
+
+        /* Responsive design for medium screens (max-width: 768px) */
+        @media (max-width: 768px) {
+            .main {
+                height: auto;
+                flex-direction: row;
+            }
+            .img {
+                height: 600px;
+                width: 100%;
+            }
+            .login {
+                width: 80%;
+                height: 600px;
+                padding: 1.5rem;
+            }
+            .login h2 {
+                font-size: 1.5rem;
+            }
+            .form-control {
+                padding: 0.5rem;
+                font-size: 0.9rem;
+            }
+            .btn-confirm, .btn-social {
+                padding: 0.5rem 0;
+                font-size: 0.8rem;
+            }
+        }
+        /* Responsive design for small screens (max-width: 576px) */
+        @media (max-width: 576px) {
+            .img {
+                display: none;
+            }
+            .login {
+                height: 875px;
+                width: 100%;
+                padding: 1rem;
+            }
+            .login h2 {
+                font-size: 1.9rem;
+            }
+            .form-control {
+                padding: 0.4rem;
+                font-size: 0.8rem;
+                height: 40px;
+            }
+            .btn-confirm, .btn-social {
+                padding: 0.4rem 0;
+                font-size: 0.7rem;
+                height: 40px;
+            }
+        }
+
+        /* Style the footer section */
+        footer {
+            background-color: #fff;
+            color: #000;
+            padding: 3rem 0 1rem 0;
+        }
+        /* Style footer headings */
+        footer h6 {
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            color: #000;
+        }
+        /* Style footer lists */
+        footer ul {
+            list-style: none;
+            padding: 0;
+        }
+        footer ul li {
+            margin-bottom: 0.75rem;
+            font-family: 'NType82-bold', 'Noto Sans Thai', 'NType82Mono' !important;
+        }
+        /* Style footer links */
+        footer ul li a {
+            color: #000;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+        footer ul li a:hover {
+            color: #333;
+        }
+        /* Style the email subscription section in footer */
+        .footer-email {
+            position: relative;
+            max-width: 300px;
+        }
+        .footer-email input {
+            width: 100%;
+            padding: 0.5rem 1rem;
+            background-color: transparent;
+            border: 1px solid #000;
+            border-radius: 20px;
+            color: #000;
+            font-size: 0.9rem;
+        }
+        .footer-email input::placeholder {
+            color: #666;
+            text-transform: uppercase;
+        }
+        .footer-email button {
+            position: absolute;
+            right: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #000;
+            cursor: pointer;
+        }
+        .footer-email button svg {
+            width: 20px;
+            height: 20px;
+        }
+        /* Style the footer bottom section */
+        .footer-bottom {
+            border-top: 1px solid #ccc;
+            padding-top: 1.5rem;
+            margin-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .footer-bottom ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .footer-bottom ul li a {
+            font-size: 0.85rem;
+        }
+        /* Style social media icons */
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+        .social-icons a {
+            color: #000;
+            transition: color 0.3s ease;
+        }
+        .social-icons a:hover {
+            color: #333;
+        }
+        .social-icons svg {
+            width: 20px;
+            height: 20px;
+        }
+        /* Style the country selector */
+        .country-selector {
+            font-size: 0.9rem;
+            color: #000;
+        }
+
+        /* Responsive design for small screens (max-width: 576px) in footer */
+        @media (max-width: 576px) {
+            footer {
+                padding: 2rem 0 1rem 0;
+            }
+            footer h6 {
+                font-size: 0.9rem;
+                margin-bottom: 1rem;
+            }
+            footer ul li {
+                margin-bottom: 0.5rem;
+            }
+            footer ul li a {
+                font-size: 0.85rem;
+            }
+            .footer-email {
+                max-width: 100%;
+                margin-top: 1rem;
+            }
+            .footer-email input {
+                font-size: 0.85rem;
+                padding: 0.4rem 0.8rem;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            .footer-bottom ul {
+                gap: 0.75rem;
+            }
+            .footer-bottom ul li a {
+                font-size: 0.8rem;
+            }
+            .social-icons {
+                gap: 0.75rem;
+            }
+            .social-icons svg {
+                width: 18px;
+                height: 18px;
+            }
+            .country-selector {
+                font-size: 0.85rem;
+            }
+        }
+        /* Responsive design for medium screens (577px - 768px) in footer */
+        @media (min-width: 577px) and (max-width: 768px) {
+            footer {
+                padding: 2.5rem 0 1rem 0;
+                font-family: 'NType82-bold', 'Noto Sans Thai', 'NType82Mono' !important;
+            }
+            footer h6 {
+                font-size: 0.95rem;
+            }
+            footer ul li a {
+                font-size: 0.9rem;
+            }
+            .footer-email {
+                max-width: 250px;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation bar section -->
+    <nav data-aos="fade-down" data-aos-duration="800">
+        <!-- Logo container with animation -->
+        <div class="d-flex justify-content-end align-items-center logo" data-aos="zoom-in" data-aos-delay="200">
+            <a href="">NOTHING(R)</a>
+        </div>
+    </nav>
+
+    <!-- Main section containing image and login form -->
+    <div class="d-flex main" data-aos="fade-up" data-aos-duration="1000">
+        <!-- Background image section with animation -->
+        <div class="img" data-aos="fade-left" data-aos-delay="200"></div>
+        <!-- Login form container with animation -->
+        <div class="login" data-aos="fade-right" data-aos-delay="400">
+            <!-- Login form heading with animation -->
+            <h2 data-aos="zoom-in" data-aos-delay="600">LOGIN</h2>
+            <form>
+                <!-- Email input field with animation -->
+                <div class="mb-3" data-aos="fade-up" data-aos-delay="800">
+                    <input type="email" class="form-control" placeholder="Email address" required>
+                </div>
+                <!-- Password input field with eye icon and animation -->
+                <div class="mb-3 password-wrapper" data-aos="fade-up" data-aos-delay="900">
+                    <input type="password" class="form-control" placeholder="Password" required>
+                    <span class="eye-icon">👁️</span>
+                </div>
+                <!-- Forgot password link with animation -->
+                <div class="forgot-password" data-aos="fade-up" data-aos-delay="1000">
+                    <a href="#">Forgot your password? Click here</a>
+                </div>
+                <!-- Confirm button with animation -->
+                <button type="submit" class="btn btn-confirm" data-aos="zoom-in" data-aos-delay="1100">Confirm</button>
+            </form>
+            <!-- Divider between login options with animation -->
+            <div class="or-divider" data-aos="fade-up" data-aos-delay="1200">Or</div>
+            <!-- Social login buttons with animations -->
+            <button type="button" class="btn btn-social" data-aos="zoom-in" data-aos-delay="1300">Continue with Google</button>
+            <button type="button" class="btn btn-social" data-aos="zoom-in" data-aos-delay="1400">Continue with Apple</button>
+            <!-- Privacy policy text with animation -->
+            <div class="privacy-policy" data-aos="fade-up" data-aos-delay="1500">
+                By signing in, you agree to our <a href="#" style="color: #fff;">privacy policy</a>
+            </div>
+            <!-- Create account link with animation -->
+            <div class="create-account" data-aos="fade-up" data-aos-delay="1600">
+                Don’t have an account? <a href="#" style="color: #fff;">Create one</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer section with multiple columns -->
+    <footer data-aos="fade-up" data-aos-duration="1000">
+        <div class="container">
+            <div class="row">
+                <!-- Products column with animation -->
+                <div class="col-12 col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <h6>Products</h6>
+                    <ul>
+                        <li><a href="#">Phone (3a) Pro</a></li>
+                        <li><a href="#">Phone (3a)</a></li>
+                        <li><a href="#">Phone (2a) Plus</a></li>
+                        <li><a href="#">Phone (2a)</a></li>
+                        <li><a href="#">Phone (2)</a></li>
+                        <li><a href="#">Ear (open)</a></li>
+                        <li><a href="#">Ear</a></li>
+                        <li><a href="#">Ear (a)</a></li>
+                        <li><a href="#">Accessories</a></li>
+                        <li><a href="#">Apparel</a></li>
+                    </ul>
+                </div>
+                <!-- Company column with animation -->
+                <div class="col-12 col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <h6>Company</h6>
+                    <ul>
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Community</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                        <li><a href="#">Business enquiry</a></li>
+                        <li><a href="#">Press contact</a></li>
+                    </ul>
+                </div>
+                <!-- Support column with animation -->
+                <div class="col-12 col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <h6>Support</h6>
+                    <ul>
+                        <li><a href="#">Support centre</a></li>
+                        <li><a href="#">Contact us</a></li>
+                        <li><a href="#">Contact us via WhatsApp</a></li>
+                        <li><a href="#">Service centre</a></li>
+                        <li><a href="#">E-waste management</a></li>
+                        <li><a href="#">Find a store</a></li>
+                    </ul>
+                </div>
+                <!-- Mailing list subscription with animation -->
+                <div class="col-12 col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="500">
+                    <h6>Join Our Mailing List</h6>
+                    <div class="footer-email">
+                        <input type="email" placeholder="Email Address">
+                        <button>
+                            <!-- SVG arrow icon for email submission -->
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer bottom section with policies, social icons, and country selector -->
+            <div class="footer-bottom" data-aos="fade-up" data-aos-delay="600">
+                <ul>
+                    <li><a href="#">Privacy policy</a></li>
+                    <li><a href="#">Warranty policy</a></li>
+                    <li><a href="#">Acceptable use policy</a></li>
+                    <li><a href="#">User agreement</a></li>
+                </ul>
+                <!-- Social media icons -->
+                <div class="social-icons">
+                    <a href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg></a>
+                    <a href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+                    <a href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+                    <a href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a>
+                </div>
+                <!-- Country selector -->
+                <div class="country-selector">India</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Include Bootstrap JS and Popper.js for interactive components -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <!-- Include AOS JS for scroll animations -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS library with custom settings
+        AOS.init({
+            duration: 1000, // Global duration for all animations
+            once: true, // Animations happen only once when scrolling down
+            offset: 100, // Trigger animations 100px before element enters viewport
+        });
+    </script>
+</body>
+</html>

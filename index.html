@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Defines the character encoding for the document -->
+    <meta charset="UTF-8">
+    <!-- Ensures responsive design across devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Sets the page title displayed in the browser tab -->
+    <title>Nothing</title>
+    <!-- Links to the favicon for the website -->
+    <link rel="shortcut icon" href="https://in.nothing.tech/cdn/shop/files/favicon_32x32.png?v=1627219742"
+        type="image/x-icon">
+    <!-- Includes Bootstrap 5 CSS for responsive layout and styling -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Imports Google Fonts: DotGothic16 for headings and Noto Sans for body text -->
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Noto+Sans:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <!-- Includes AOS (Animate On Scroll) CSS for scroll animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS styles for the website -->
+    <style>
+        /* Resets default margins, padding, and ensures box-sizing is consistent */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Sets global styles for the body */
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Prevents horizontal scrolling */
+            line-height: 1.6; /* Improves readability */
+        }
+
+        /* Styles the navigation bar */
+        .navbar {
+            background-color: #000;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid #333;
+            justify-content: space-between;
+            position: sticky; /* Keeps navbar fixed at the top */
+            top: 0;
+            z-index: 1000; /* Ensures navbar stays above other content */
+        }
+
+        /* Styles the navbar brand/logo */
+        .navbar-brand {
+            font-family: 'DotGothic16', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            white-space: nowrap;
+            transition: color 0.3s ease; /* Smooth color transition on hover */
+        }
+
+        .navbar-brand:hover {
+            color: #1e3a8a; /* Changes color on hover */
+        }
+
+        /* Styles navigation links */
+        .navbar-nav .nav-link {
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            margin-left: 1.5rem;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+            font-family: 'NType82-bold', 'Noto Sans Thai', 'NType82Mono' !important; /* Custom font override */
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #1e3a8a;
+        }
+
+        /* Styles the hamburger menu icon for mobile */
+        .navbar-toggler-icon {
+            background-color: #ffffff;
+        }
+
+        /* Styles dropdown menus */
+        .dropdown-menu {
+            background-color: #000;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(255, 255, 255, 0.2);
+        }
+
+        .dropdown-menu a {
+            color: #fff;
+            font-family: 'NType82-bold', 'Noto Sans Thai', 'NType82Mono' !important;
+        }
+
+        .dropdown-item {
+            color: #fff;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            padding: 0.5rem 1rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dropdown-item:hover {
+            background-color: #152e6f;
+            color: #fff;
+        }
+
+        /* Styles the user profile icon */
+        .user-icon {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            fill: #fff;
+            transition: fill 0.3s ease;
+        }
+
+        .user-icon:hover {
+            fill: #1e3a8a;
+        }
+
+        /* Styles main content sections */
+        .main,
+        .nplus {
+            height: 865px; /* Fixed height for sections */
+            width: 100%;
+            display: flex;
+            background: linear-gradient(90deg, #1a1a1a 0%, #333 100%); /* Gradient background */
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Styles background images for sections */
+        .p3a,
+        .nimg,
+        .nbim,
+        .eopen,
+        .ear,
+        .eara,
+        .clip,
+        .cmf1,
+        .na,
+        .glyph {
+            width: 75%;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        /* Specific background images for each section */
+        .p3a {
+            background-image: url('https://in.nothing.tech/cdn/shop/files/Desktop_1_1592x.png?v=1741679406');
+        }
+
+        .nimg {
+            background-image: url('https://in.nothing.tech/cdn/shop/files/Desktop_Sept_10_1592x.jpg?v=1725959737');
+        }
+
+        .nbim {
+            background-image: url('https://in.nothing.tech/cdn/shop/files/phone-2a-blue-desktop_1592x.jpg?v=1714298780');
+        }
+
+        .eopen {
+            background-image: url('https://in.nothing.tech/cdn/shop/files/KV_-_Desktop_-_Homepage_2560x2040_a5b44b3d-5c16-4e62-bf0c-14ed3dab60d1_1592x.png?v=1726913098');
+        }
+
+        .ear {
+            background-image: url('https://in.nothing.tech/cdn/shop/files/ear-desktop_1592x.jpg?v=1713100358');
+        }
+
+        .eara {
+            background-image: url('https://in.nothing.tech/cdn/shop/files/ear-a-desktop_1592x.jpg?v=1713100357');
+        }
+
+        .clip {
+            background-image: url('https://www.gizmochina.com/wp-content/uploads/2024/10/Nothing-OS-3.0.png');
+        }
+
+        .cmf1 {
+            background-image: url('https://in.nothing.tech/cdn/shop/files/Homepage_-_Desktop_-_1560x2040_801a445f-c46b-472c-8c85-0f69c6401306_1592x.jpg?v=1720446003');
+        }
+
+        .na {
+            background-image: url('https://in.nothing.tech/cdn/shop/files/2560x2040_62f4a802-9155-4564-a112-13bb8f6656be_1592x.jpg?v=1731901615');
+        }
+
+        .glyph {
+            background-image: url('https://in.nothing.tech/cdn/shop/files/2560_x_2050_1592x.png?v=1709388882');
+        }
+
+        /* Styles text/button containers in sections */
+        .p3s,
+        .pspace {
+            width: 25%;
+            background-color: #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
+            align-items: flex-start;
+            padding: 2rem;
+            font-family: 'NType82-bold', 'Noto Sans Thai', 'NType82Mono' !important;
+        }
+
+        .bn,
+        .buy {
+            width: 100%;
+            padding: 0;
+        }
+
+        /* Styles headings in sections */
+        .p3s h1,
+        .nplus h2 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            color: #fff;
+            text-align: start;
+            margin-left: 0;
+        }
+
+        /* Styles paragraphs in sections */
+        .p3s p,
+        .nplus p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: #ccc;
+            text-align: start;
+            margin-left: 0;
+        }
+
+        #txt {
+            width: 80%;
+        }
+
+        /* Styles buttons in sections */
+        .p3s button,
+        .nplus button {
+            height: 50px;
+            width: 500px;
+            max-width: 400px;
+            border: none;
+            color: #000;
+            background-color: #fff;
+            border-radius: 25px;
+            font-size: 1.25rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin-left: 0;
+        }
+
+        .p3s button:hover,
+        .nplus button:hover {
+            background-color: #ccc;
+            transform: translateY(-2px); /* Slight lift on hover */
+        }
+
+        button {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* Styles the quotes section */
+        .quotes-section {
+            background-color: #1a1a1a;
+            padding: 3rem 0;
+        }
+
+        .quote-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .quote-card h4 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #fff;
+            font-family: 'NType82-bold', 'Noto Sans Thai', 'NType82Mono';
+        }
+
+        .quote-card h5 {
+            font-size: 1.25rem;
+            color: #ccc;
+            line-height: 1.5;
+            position: relative;
+            font-family: 'NType82-bold', 'Noto Sans Thai', 'NType82Mono';
+        }
+
+        /* Adds quotation marks around quotes */
+        .quote-card h5::before,
+        .quote-card h5::after {
+            content: '"';
+            font-size: 2rem;
+            color: #ccc;
+            position: absolute;
+        }
+
+        .quote-card h5::before {
+            top: -0.5rem;
+            left: -1rem;
+        }
+
+        .quote-card h5::after {
+            bottom: -1.5rem;
+            right: -1rem;
+        }
+
+        /* Styles the footer */
+        footer {
+            background-color: #ffffff;
+            color: #000000;
+            padding: 3rem 0 1rem 0;
+        }
+
+        footer h6 {
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        footer ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        footer ul li a {
+            color: #000000;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        footer ul li a:hover {
+            color: #1e3a8a;
+        }
+
+        /* Styles the email subscription form in the footer */
+        .footer-email {
+            position: relative;
+            max-width: 300px;
+        }
+
+        .footer-email input {
+            width: 100%;
+            padding: 0.5rem 1rem;
+            background-color: transparent;
+            border: 1px solid #000000;
+            border-radius: 20px;
+            color: #000000;
+            font-size: 0.9rem;
+        }
+
+        .footer-email input::placeholder {
+            color: #ccc;
+            text-transform: uppercase;
+        }
+
+        .footer-email button {
+            position: absolute;
+            right: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #000000;
+            cursor: pointer;
+        }
+
+        .footer-email button svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Styles the footer bottom section */
+        .footer-bottom {
+            border-top: 1px solid #070404;
+            padding-top: 1.5rem;
+            margin-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .footer-bottom ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-family: 'NType82-bold', 'Noto Sans Thai', 'NType82Mono' !important; /* Custom font override */
+        }
+
+        .footer-bottom ul li a {
+            font-size: 0.85rem;
+            font-family: 'NType82-bold', 'Noto Sans Thai', 'NType82Mono' !important; /* Custom font override */
+
+        }
+
+        /* Styles social media icons */
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icons a {
+            color: #000000;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #1e3a8a;
+        }
+
+        .social-icons svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .country-selector {
+            font-size: 0.9rem;
+            color: #000000;
+        }
+
+        /* Responsive adjustments for small screens (320px - 576px) */
+        @media (min-width: 320px) and (max-width: 576px) {
+            .navbar {
+                padding: 0.75rem 1rem;
+                background-color: #000;
+            }
+
+            .navbar-brand {
+                font-size: 1.2rem;
+            }
+
+            .navbar-nav .nav-link {
+                margin-left: 0.75rem;
+                font-size: 0.9rem;
+            }
+
+            .navbar-collapse {
+                padding: 0.5rem 0;
+                background-color: #000;
+                border-top: 1px solid #333;
+            }
+
+            .dropdown-menu {
+                background-color: #1e3a8a;
+                border-radius: 0;
+                width: 100%;
+                text-align: center;
+            }
+
+            .dropdown-item {
+                font-size: 0.85rem;
+            }
+
+            .user-icon {
+                width: 20px;
+                height: 20px;
+            }
+
+            .main,
+            .nplus {
+                flex-direction: column;
+                height: 500px;
+            }
+
+            .p3a,
+            .nimg,
+            .nbim,
+            .eopen,
+            .ear,
+            .eara,
+            .clip,
+            .cmf1,
+            .na,
+            .glyph {
+                width: 100%;
+                height: 40vh;
+                background-size: cover;
+                background-position: center;
+            }
+
+            .p3s,
+            .pspace {
+                width: 100%;
+                padding: 1.5rem;
+                align-items: flex-start;
+            }
+
+            .bn,
+            .buy {
+                padding: 0;
+            }
+
+            .p3s h1,
+            .nplus h2 {
+                font-size: 2rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .p3s p,
+            .nplus p {
+                font-size: 1rem;
+                margin-bottom: 1rem;
+            }
+
+            .p3s button,
+            .nplus button {
+                max-width: 250px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .d-flex {
+                justify-content: start !important;
+                margin-left: 0;
+            }
+
+            .quotes-section {
+                padding: 2rem 0;
+            }
+
+            .quote-card h4 {
+                font-size: 1.25rem;
+            }
+
+            .quote-card h5 {
+                font-size: 1rem;
+            }
+
+            .quote-card h5::before,
+            .quote-card h5::after {
+                font-size: 1.5rem;
+            }
+
+            .quote-card h5::before {
+                top: -0.3rem;
+                left: -0.5rem;
+            }
+
+            .quote-card h5::after {
+                bottom: -1rem;
+                right: -0.5rem;
+            }
+
+            footer {
+                padding: 2rem 0 1rem 0;
+            }
+
+            footer h6 {
+                font-size: 0.9rem;
+                margin-bottom: 1rem;
+            }
+
+            footer ul li {
+                margin-bottom: 0.5rem;
+            }
+
+            footer ul li a {
+                font-size: 0.85rem;
+            }
+
+            .footer-email {
+                max-width: 100%;
+                margin-top: 1rem;
+            }
+
+            .footer-email input {
+                font-size: 0.85rem;
+                padding: 0.4rem 0.8rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .footer-bottom ul {
+                gap: 0.75rem;
+            }
+
+            .footer-bottom ul li a {
+                font-size: 0.8rem;
+            }
+
+            .social-icons {
+                gap: 0.75rem;
+            }
+
+            .social-icons svg {
+                width: 18px;
+                height: 18px;
+            }
+
+            .country-selector {
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Responsive adjustments for medium screens (577px - 768px) */
+        @media (min-width: 577px) and (max-width: 768px) {
+            .navbar {
+                padding: 1rem 1.5rem;
+            }
+
+            .navbar-brand {
+                font-size: 1.3rem;
+            }
+
+            .navbar-nav .nav-link {
+                margin-left: 1rem;
+                font-size: 0.95rem;
+            }
+
+            .navbar-collapse {
+                padding: 0.75rem 0;
+            }
+
+            .dropdown-item {
+                font-size: 0.9rem;
+            }
+
+            .user-icon {
+                width: 22px;
+                height: 22px;
+            }
+
+            .main,
+            .nplus {
+                flex-direction: column;
+                height: 600px;
+            }
+
+            .p3a,
+            .nimg,
+            .nbim,
+            .eopen,
+            .ear,
+            .eara,
+            .clip,
+            .cmf1,
+            .na,
+            .glyph {
+                width: 100%;
+                height: 50vh;
+                background-size: cover;
+                background-position: center;
+            }
+
+            .p3s,
+            .pspace {
+                width: 100%;
+                padding: 2rem;
+                align-items: flex-start;
+            }
+
+            .bn,
+            .buy {
+                padding: 0;
+            }
+
+            .p3s h1,
+            .nplus h2 {
+                font-size: 2.5rem;
+                margin-bottom: 0.75rem;
+            }
+
+            .p3s p,
+            .nplus p {
+                font-size: 1.1rem;
+                margin-bottom: 1rem;
+            }
+
+            .p3s button,
+            .nplus button {
+                max-width: 300px;
+                height: 45px;
+                font-size: 1.1rem;
+            }
+
+            .d-flex {
+                justify-content: start !important;
+                margin-left: 0;
+            }
+
+            .quotes-section {
+                padding: 2.5rem 0;
+            }
+
+            .quote-card h4 {
+                font-size: 1.35rem;
+            }
+
+            .quote-card h5 {
+                font-size: 1.1rem;
+            }
+
+            .quote-card h5::before,
+            .quote-card h5::after {
+                font-size: 1.75rem;
+            }
+
+            footer {
+                padding: 2.5rem 0 1rem 0;
+                font-family: 'NType82-bold', 'Noto Sans Thai', 'NType82Mono' !important;
+            }
+
+            footer h6 {
+                font-size: 0.95rem;
+            }
+
+            footer ul li a {
+                font-size: 0.9rem;
+            }
+
+            .footer-email {
+                max-width: 250px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+        }
+
+        /* Responsive adjustments for larger tablets (769px - 992px) */
+        @media (min-width: 769px) and (max-width: 992px) {
+            .navbar {
+                padding: 1rem 1.5rem;
+            }
+
+            .navbar-brand {
+                font-size: 1.4rem;
+            }
+
+            .navbar-nav .nav-link {
+                margin-left: 1.25rem;
+            }
+
+            .main,
+            .nplus {
+                min-height: 550px;
+            }
+
+            .p3a,
+            .nimg,
+            .nbim,
+            .eopen,
+            .ear,
+            .eara,
+            .clip,
+            .cmf1,
+            .na,
+            .glyph {
+                width: 70%;
+            }
+
+            .p3s,
+            .pspace {
+                width: 30%;
+                padding: 1.5rem;
+            }
+
+            .bn,
+            .buy {
+                padding: 0;
+            }
+
+            .p3s h1,
+            .nplus h2 {
+                font-size: 3rem;
+            }
+
+            .p3s p,
+            .nplus p {
+                font-size: 1.1rem;
+            }
+
+            .p3s button,
+            .nplus button {
+                max-width: 250px;
+            }
+
+            .d-flex {
+                justify-content: center !important;
+            }
+
+            .quotes-section {
+                padding: 2.5rem 0;
+            }
+
+            .quote-card h4 {
+                font-size: 1.4rem;
+            }
+
+            .quote-card h5 {
+                font-size: 1.15rem;
+            }
+
+            footer {
+                padding: 2.5rem 0 1rem 0;
+            }
+        }
+
+        /* Responsive adjustments for desktops (993px - 1650px) */
+        @media (min-width: 993px) and (max-width: 1650px) {
+            .navbar {
+                padding: 1rem 2rem;
+            }
+
+            .navbar-brand {
+                font-size: 1.5rem;
+            }
+
+            .main,
+            .nplus {
+                min-height: 700px;
+            }
+
+            .p3s h1,
+            .nplus h2 {
+                font-size: 3.5rem;
+            }
+
+            .p3s p,
+            .nplus p {
+                font-size: 1.2rem;
+            }
+
+            .p3s button,
+            .nplus button {
+                max-width: 250px;
+            }
+
+            .d-flex {
+                justify-content: center !important;
+            }
+
+            .quotes-section {
+                padding: 3rem 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Section: Navigation Bar -->
+    <nav class="navbar navbar-expand-lg" data-aos="fade-down" data-aos-duration="800">
+        <div class="container-fluid">
+            <!-- Brand logo linking to homepage -->
+            <a class="navbar-brand" href="#">NOTHING (R)</a>
+            <!-- Hamburger menu toggle for mobile -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Navigation links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <!-- Phone dropdown menu -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="phoneDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Phone</a>
+                        <ul class="dropdown-menu" aria-labelledby="phoneDropdown">
+                            <li><a class="dropdown-item" href="#">Phone (1)</a></li>
+                            <li><a class="dropdown-item" href="#">Phone (2)</a></li>
+                            <li><a class="dropdown-item" href="#">Phone 2A</a></li>
+                            <li><a class="dropdown-item" href="#">Phone 2A PLUS</a></li>
+                            <li><a class="dropdown-item" href="#">Phone (3A)</a></li>
+                            <li><a class="dropdown-item" href="#">Phone (3A) PRO</a></li>
+                        </ul>
+                    </li>
+                    <!-- Audio dropdown menu -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="audioDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">Audio</a>
+                        <ul class="dropdown-menu" aria-labelledby="audioDropdown">
+                            <li><a class="dropdown-item" href="#">Ear (1)</a></li>
+                            <li><a class="dropdown-item" href="#">Ear (Stick)</a></li>
+                            <li><a class="dropdown-item" href="#">Ear (Pro)</a></li>
+                        </ul>
+                    </li>
+                    <!-- Single navigation items -->
+                    <li class="nav-item"><a class="nav-link" href="cmf.html" target="_blank">CMF</a></li>
+                    <li class="nav-item"><a class="nav-link" href="store.html" target="_blank">Store</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Community</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Support</a></li>
+                </ul>
+            </div>
+            <!-- User profile link with SVG icon -->
+            <a href="profile.html" class="nav-link" target="_blank">
+                <svg class="user-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Section 1: Phone (3a) Series -->
+    <div class="main" data-aos="fade-up" data-aos-duration="1000">
+        <div class="p3a" data-aos="fade-right" data-aos-delay="200"></div>
+        <div class="p3s" data-aos="fade-left" data-aos-delay="400">
+            <div class="bn">
+                <h1 id="txt" data-aos="zoom-in" data-aos-delay="600">Phone(3a) Series.</h1>
+                <p id="txt" data-aos="fade-up" data-aos-delay="800">Get Closer.</p>
+                <div class="d-flex">
+                    <a href="https://www.flipkart.com/nothing-phone-3a/p/itm8150b2c810f5b?pid=MOBH8G3PK4RZFYAA&ocmpid=BrandAd_Nothing_Phone3aPro_website_d2c_open_sale"
+                        data-aos="zoom-in" data-aos-delay="1000"><button>BUY NOW</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 2: Phone (2a) Plus -->
+    <div class="nplus" data-aos="fade-up" data-aos-duration="1000">
+        <div class="nimg" data-aos="fade-right" data-aos-delay="200"></div>
+        <div class="pspace" data-aos="fade-left" data-aos-delay="400">
+            <div class="buy">
+                <h2 id="txt" data-aos="zoom-in" data-aos-delay="600">Phone (2a) Plus</h2>
+                <p id="txt" data-aos="fade-up" data-aos-delay="800">Extra power, extra pixels, extra unique.</p>
+                <p id="txt" data-aos="fade-up" data-aos-delay="900">Extraordinary.</p>
+                <div class="d-flex">
+                    <a target="_blank"
+                        href="https://www.flipkart.com/nothing-phone-2a-plus-grey-256-gb/p/itm0c99b11bfe22d?pid=MOBH322WYZVQDCY9&lid=LSTMOBH322WYZVQDCY9XWRXHY&marketplace=FLIPKART&q=nothing+2a+plus&store=tyy%2F4io&srno=s_1_1&otracker=AS_Query_OrganicAutoSuggest_1_11_na_na_na&otracker1=AS_Query_OrganicAutoSuggest_1_11_na_na_na&fm=organic&iid=663f9e50-8c8a-445f-9275-caa197951fcb.MOBH322WYZVQDCY9.SEARCH&ppt=hp&ppn=homepage&ssid=o0xbfjadn40000001742026395969&qH=930c6f61042c619a"
+                        data-aos="zoom-in" data-aos-delay="1000"><button>BUY NOW</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 3: Phone (2a) -->
+    <div class="nplus" data-aos="fade-up" data-aos-duration="1000">
+        <div class="nbim" data-aos="fade-right" data-aos-delay="200"></div>
+        <div class="pspace" data-aos="fade-left" data-aos-delay="400">
+            <div class="buy">
+                <h2 id="txt" data-aos="zoom-in" data-aos-delay="600">Phone (2a)</h2>
+                <p id="txt" data-aos="fade-up" data-aos-delay="800">A new icon is born. And now, a new edition.</p>
+                <p id="txt" data-aos="fade-up" data-aos-delay="900">Phone (2a) Blue is here. Designed exclusively for India</p>
+                <div class="d-flex">
+                    <a target="_blank"
+                        href="https://www.flipkart.com/nothing-phone-2a-5g-blue-128-gb/p/itm85c6bca5edadc?pid=MOBHY8KMDGZNWH4G&lid=LSTMOBHY8KMDGZNWH4GPMEHQG&marketplace=FLIPKART&q=nothing+2a&store=tyy%2F4io&srno=s_1_4&otracker=AS_QueryStore_OrganicAutoSuggest_1_4_na_na_ps&otracker1=AS_QueryStore_OrganicAutoSuggest_1_4_na_na_ps&fm=organic&iid=9f6027f6-6a39-4bbe-aab3-59735d9bf35f.MOBHY8KMDGZNWH4G.SEARCH&ppt=pp&ppn=pp&ssid=w8oykgnkqo0000001742029982769&qH=141f10ef6bbc0958"
+                        data-aos="zoom-in" data-aos-delay="1000"><button>BUY NOW</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 4: Ear (open) -->
+    <div class="nplus" data-aos="fade-up" data-aos-duration="1000">
+        <div class="eopen" data-aos="fade-right" data-aos-delay="200"></div>
+        <div class="pspace" data-aos="fade-left" data-aos-delay="400">
+            <div class="buy">
+                <h2 id="txt" data-aos="zoom-in" data-aos-delay="600">Ear (open)</h2>
+                <p id="txt" data-aos="fade-up" data-aos-delay="800">(open) your world.</p>
+                <p id="txt" data-aos="fade-up" data-aos-delay="900">Discover a more present way to listen.</p>
+                <div class="d-flex">
+                    <a target="_blank" href="https://in.nothing.tech/products/ear-open" data-aos="zoom-in" data-aos-delay="1000"><button>LEARN MORE</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 5: Ear -->
+    <div class="nplus" data-aos="fade-up" data-aos-duration="1000">
+        <div class="ear" data-aos="fade-right" data-aos-delay="200"></div>
+        <div class="pspace" data-aos="fade-left" data-aos-delay="400">
+            <div class="buy">
+                <h2 id="txt" data-aos="zoom-in" data-aos-delay="600">Ear</h2>
+                <p id="txt" data-aos="fade-up" data-aos-delay="800">Sound, evolved.</p>
+                <p id="txt" data-aos="fade-up" data-aos-delay="900">Our best-ever audio experience.</p>
+                <div class="d-flex">
+                    <a target="_blank" href="https://in.nothing.tech/products/ear" data-aos="zoom-in" data-aos-delay="1000"><button>LEARN MORE</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 6: Ear (a) -->
+    <div class="nplus" data-aos="fade-up" data-aos-duration="1000">
+        <div class="eara" data-aos="fade-right" data-aos-delay="200"></div>
+        <div class="pspace" data-aos="fade-left" data-aos-delay="400">
+            <div class="buy">
+                <h2 id="txt" data-aos="zoom-in" data-aos-delay="600">Ear (a)</h2>
+                <p id="txt" data-aos="fade-up" data-aos-delay="800">Let’s play.</p>
+                <p id="txt" data-aos="fade-up" data-aos-delay="900">Made for every part of every day.</p>
+                <div class="d-flex">
+                    <a target="_blank" href="https://in.nothing.tech/products/ear-a" data-aos="zoom-in" data-aos-delay="1000"><button>LEARN MORE</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 7: Nothing OS 3.0 -->
+    <div class="nplus" data-aos="fade-up" data-aos-duration="1000">
+        <div class="clip" data-aos="fade-right" data-aos-delay="200"></div>
+        <div class="pspace" data-aos="fade-left" data-aos-delay="400">
+            <div class="buy">
+                <h2 id="txt" data-aos="zoom-in" data-aos-delay="600">Nothing OS 3.0</h2>
+                <p id="txt" data-aos="fade-up" data-aos-delay="800">Nothing OS 3.0 takes the effort out of everyday with new features and shortcuts that make sense to you. Powered by Android 15. Now available on Phone (2) and Phone (2a).</p>
+                <div class="d-flex">
+                    <a target="_blank" href="https://in.nothing.tech/products/ear-a" data-aos="zoom-in" data-aos-delay="1000"><button>LEARN MORE</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 8: CMF by Nothing -->
+    <div class="nplus" data-aos="fade-up" data-aos-duration="1000">
+        <div class="cmf1" data-aos="fade-right" data-aos-delay="200"></div>
+        <div class="pspace" data-aos="fade-left" data-aos-delay="400">
+            <div class="buy">
+                <h2 id="txt" data-aos="zoom-in" data-aos-delay="600">CMF by Nothing</h2>
+                <p id="txt" data-aos="fade-up" data-aos-delay="800">Wonderful by design.</p>
+                <p id="txt" data-aos="fade-up" data-aos-delay="900">Say hello to CMF Phone 1, Watch Pro 2 and Buds Pro 2.</p>
+                <div class="d-flex">
+                    <a target="_blank" href="https://in.nothing.tech/products/ear-a" data-aos="zoom-in" data-aos-delay="1000"><button>LEARN MORE</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 9: Nothing Apparel -->
+    <div class="nplus" data-aos="fade-up" data-aos-duration="1000">
+        <div class="na" data-aos="fade-right" data-aos-delay="200"></div>
+        <div class="pspace" data-aos="fade-left" data-aos-delay="400">
+            <div class="buy">
+                <h2 id="txt" data-aos="zoom-in" data-aos-delay="600">Nothing Apparel</h2>
+                <p id="txt" data-aos="fade-up" data-aos-delay="800">Drop 2 is here.</p>
+                <p id="txt" data-aos="fade-up" data-aos-delay="900">The Ripstop Tracksuit, Ripstop Overall and Heavy Hoodie are available now.</p>
+                <p id="txt" data-aos="fade-up" data-aos-delay="1000">Find your fit</p>
+                <div class="d-flex">
+                    <a target="_blank" href="https://in.nothing.tech/products/ear-a" data-aos="zoom-in" data-aos-delay="1100"><button>LEARN MORE</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 10: Glyph (Duplicate content, likely a mistake) -->
+    <div class="nplus" data-aos="fade-up" data-aos-duration="1000">
+        <div class="glyph" data-aos="fade-right" data-aos-delay="200"></div>
+        <div class="pspace" data-aos="fade-left" data-aos-delay="400">
+            <div class="buy">
+                <h2 id="txt" data-aos="zoom-in" data-aos-delay="600">Nothing Apparel</h2>
+                <p id="txt" data-aos="fade-up" data-aos-delay="800">Drop 2 is here.</p>
+                <p id="txt" data-aos="fade-up" data-aos-delay="900">The Ripstop Tracksuit, Ripstop Overall and Heavy Hoodie are available now.</p>
+                <p id="txt" data-aos="fade-up" data-aos-delay="1000">Find your fit</p>
+                <div class="d-flex">
+                    <a target="_blank" href="https://in.nothing.tech/products/ear-a" data-aos="zoom-in" data-aos-delay="1100"><button>LEARN MORE</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section 11: Quotes Section -->
+    <section class="quotes-section" data-aos="fade-up" data-aos-duration="1000">
+        <div class="container">
+            <div class="row justify-content-center">
+                <!-- Quote 1 -->
+                <div class="col-12 col-md-4 quote-card" data-aos="flip-left" data-aos-delay="200">
+                    <h4>Wallpaper*</h4>
+                    <h5>“A radical reinterpretation of mobile tech”</h5>
+                </div>
+                <!-- Quote 2 -->
+                <div class="col-12 col-md-4 quote-card" data-aos="flip-left" data-aos-delay="400">
+                    <h4>Highsnobiety</h4>
+                    <h5>“Boundary-pushing aesthetics”</h5>
+                </div>
+                <!-- Quote 3 -->
+                <div class="col-12 col-md-4 quote-card" data-aos="flip-left" data-aos-delay="600">
+                    <h4>GQ</h4>
+                    <h5>“The most hyped tech company in years”</h5>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer data-aos="fade-up" data-aos-duration="1000">
+        <div class="container">
+            <div class="row">
+                <!-- Footer Column 1: Products -->
+                <div class="col-12 col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <h6>Products</h6>
+                    <ul>
+                        <li><a href="#">Phone (3a) Pro</a></li>
+                        <li><a href="#">Phone (3a)</a></li>
+                        <li><a href="#">Phone (2a) Plus</a></li>
+                        <li><a href="#">Phone (2a)</a></li>
+                        <li><a href="#">Phone (2)</a></li>
+                        <li><a href="#">Ear (open)</a></li>
+                        <li><a href="#">Ear</a></li>
+                        <li><a href="#">Ear (a)</a></li>
+                        <li><a href="#">Accessories</a></li>
+                        <li><a href="#">Apparel</a></li>
+                    </ul>
+                </div>
+                <!-- Footer Column 2: Company -->
+                <div class="col-12 col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <h6>Company</h6>
+                    <ul>
+                        <li><a href="#">About us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Community</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                        <li><a href="#">Business enquiry</a></li>
+                        <li><a href="#">Press contact</a></li>
+                    </ul>
+                </div>
+                <!-- Footer Column 3: Support -->
+                <div class="col-12 col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <h6>Support</h6>
+                    <ul>
+                        <li><a href="#">Support centre</a></li>
+                        <li><a href="#">Contact us</a></li>
+                        <li><a href="#">Contact us via WhatsApp</a></li>
+                        <li><a href="#">Service centre</a></li>
+                        <li><a href="#">E-waste management</a></li>
+                        <li><a href="#">Find a store</a></li>
+                    </ul>
+                </div>
+                <!-- Footer Column 4: Mailing List -->
+                <div class="col-12 col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="500">
+                    <h6>Join Our Mailing List</h6>
+                    <div class="footer-email">
+                        <input type="email" placeholder="Email Address">
+                        <button>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer Bottom -->
+            <div class="footer-bottom" data-aos="fade-up" data-aos-delay="600">
+                <ul>
+                    <li><a href="#">Privacy policy</a></li>
+                    <li><a href="#">Warranty policy</a></li>
+                    <li><a href="#">Acceptable use policy</a></li>
+                    <li><a href="#">User agreement</a></li>
+                </ul>
+                <!-- Social Media Icons -->
+                <div class="social-icons">
+                    <a href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z">
+                            </path>
+                        </svg></a>
+                    <a href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                            </path>
+                            <rect x="2" y="9" width="4" height="12"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg></a>
+                    <a href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg></a>
+                    <a href="#"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z">
+                            </path>
+                        </svg></a>
+                </div>
+                <!-- Country selector -->
+                <div class="country-selector">India</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <!-- AOS JS for scroll animations -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initializes AOS with custom settings
+        AOS.init({
+            duration: 1000, // Global duration for all animations (in milliseconds)
+            once: true, // Animations happen only once when scrolling down
+            offset: 100, // Trigger animations 100px before element enters viewport
+        });
+    </script>
+</body>
+
+</html>
